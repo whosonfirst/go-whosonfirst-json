@@ -4,10 +4,13 @@ import (
 	"errors"
 	"fmt"
 	"github.com/tidwall/gjson"
+	"github.com/whosonfirst/go-whosonfirst-json"
 	"strings"
 )
 
-func EnsurePropertiesAny(body []byte, properties []string) error {
+func EnsurePropertiesAny(doc json.Document, properties []string) error {
+
+	body := doc.Bytes()
 
 	for _, path := range properties {
 
@@ -24,7 +27,9 @@ func EnsurePropertiesAny(body []byte, properties []string) error {
 	return errors.New(msg)
 }
 
-func EnsureProperties(body []byte, properties []string) error {
+func EnsureProperties(doc json.Document, properties []string) error {
+
+	body := doc.Bytes()
 
 	for _, path := range properties {
 
@@ -39,7 +44,9 @@ func EnsureProperties(body []byte, properties []string) error {
 	return nil
 }
 
-func Int64Property(body []byte, possible []string, d int64) int64 {
+func Int64Property(doc json.Document, possible []string, d int64) int64 {
+
+	body := doc.Bytes()
 
 	for _, path := range possible {
 
@@ -53,7 +60,9 @@ func Int64Property(body []byte, possible []string, d int64) int64 {
 	return d
 }
 
-func Int64PropertyArray(body []byte, possible []string) []int64 {
+func Int64PropertyArray(doc json.Document, possible []string) []int64 {
+
+	body := doc.Bytes()
 
 	results := make([]int64, 0)
 
@@ -74,7 +83,9 @@ func Int64PropertyArray(body []byte, possible []string) []int64 {
 	return results
 }
 
-func StringProperty(body []byte, possible []string, d string) string {
+func StringProperty(doc json.Document, possible []string, d string) string {
+
+	body := doc.Bytes()
 
 	for _, path := range possible {
 
@@ -86,4 +97,27 @@ func StringProperty(body []byte, possible []string, d string) string {
 	}
 
 	return d
+}
+
+func StringPropertyArray(doc json.Document, possible []string) []string {
+
+	body := doc.Bytes()
+
+	results := make([]string, 0)
+
+	for _, p := range possible {
+
+		rsp := gjson.GetBytes(body, p)
+
+		if rsp.Exists() {
+
+			for _, id := range rsp.Array() {
+				results = append(results, id.String())
+			}
+
+			break
+		}
+	}
+
+	return results
 }

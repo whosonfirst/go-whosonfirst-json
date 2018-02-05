@@ -35,7 +35,7 @@ func main() {
 			log.Fatal(err)
 		}
 
-		err = utils.EnsureProperties(d.Bytes(), props)
+		err = utils.EnsureProperties(d, props)
 
 		if err != nil {
 			log.Fatal(err)
@@ -43,7 +43,7 @@ func main() {
 
 		for _, p := range props {
 
-			log.Println(path, p, utils.StringProperty(d.Bytes(), []string{p}, ""))
+			log.Println(path, p, utils.StringProperty(d, []string{p}, ""))
 		}
 	}
 }

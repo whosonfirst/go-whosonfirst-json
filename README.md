@@ -16,6 +16,18 @@ All of this package's dependencies are bundled with the code in the `vendor` dir
 
 This is work in progress. It may change (and break your code) still. This package aims to replace the existing [go-whosonfirst-geojson](https://github.com/whosonfirst/go-whosonfirst-geojson) package. If you want to follow along, please consult:
 
+This is mostly just a set of utility methods for 
+
+## Tools
+
+### wof-json
+
+```
+./bin/wof-json -property 'wof:brand_id' -property 'wof:brand_name' ../whosonfirst-brands/data/110/871/892/5/1108718925.json
+2018/02/05 16:55:20 ../whosonfirst-brands/data/110/871/892/5/1108718925.json wof:brand_id 1108718925
+2018/02/05 16:55:20 ../whosonfirst-brands/data/110/871/892/5/1108718925.json wof:brand_name Mapzen
+```
+
 ## See also
 
 * github.com/tidwall/gjson
