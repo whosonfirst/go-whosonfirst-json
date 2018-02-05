@@ -53,7 +53,7 @@ func Int64Property(body []byte, possible []string, d int64) int64 {
 	return d
 }
 
-func Int64PropertyArray(body []byte, possible []string, d int64) []int64 {
+func Int64PropertyArray(body []byte, possible []string) []int64 {
 
 	results := make([]int64, 0)
 
