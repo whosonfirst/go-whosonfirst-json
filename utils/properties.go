@@ -11,6 +11,10 @@ import (
 func EnsurePropertiesAny(doc json.Document, properties []string) error {
 
 	body := doc.Bytes()
+	return EnsurePropertiesAnyBytes(body, properties)
+}
+
+func EnsurePropertiesAnyBytes(body []byte, properties []string) error {
 
 	for _, path := range properties {
 
@@ -30,6 +34,10 @@ func EnsurePropertiesAny(doc json.Document, properties []string) error {
 func EnsureProperties(doc json.Document, properties []string) error {
 
 	body := doc.Bytes()
+	return EnsurePropertiesBytes(body, properties)
+}
+
+func EnsurePropertiesBytes(body []byte, properties []string) error {
 
 	for _, path := range properties {
 
