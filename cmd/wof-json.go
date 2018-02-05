@@ -23,27 +23,26 @@ func (p *PropertiesFlags) Set(path string) error {
 func main() {
 
 	var props PropertiesFlags
-	flag.Var(&props, "property", "...")
+	flag.Var(&props, "property", "A JSON property in dot-notation form to test for and display.")
 
 	flag.Parse()
 
 	for _, path := range flag.Args() {
 
-		d, err := json.LoadDocumentFromFile(path)
+		doc, err := json.LoadDocumentFromFile(path)
 
 		if err != nil {
 			log.Fatal(err)
 		}
 
-		err = utils.EnsureProperties(d, props)
+		err = utils.EnsureProperties(doc, props)
 
 		if err != nil {
 			log.Fatal(err)
 		}
 
 		for _, p := range props {
-
-			log.Println(path, p, utils.StringProperty(d, []string{p}, ""))
+			log.Println(path, p, utils.StringProperty(doc, []string{p}, ""))
 		}
 	}
 }
