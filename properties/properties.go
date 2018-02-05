@@ -1,4 +1,4 @@
-package utils
+package properties
 
 import (
 	"errors"
@@ -10,7 +10,7 @@ import (
 
 func EnsurePropertiesAny(doc json.Document, properties []string) error {
 
-	body := doc.Bytes()
+     body := doc.Bytes()
 	return EnsurePropertiesAnyBytes(body, properties)
 }
 

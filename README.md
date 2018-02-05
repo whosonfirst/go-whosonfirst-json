@@ -14,6 +14,8 @@ All of this package's dependencies are bundled with the code in the `vendor` dir
 
 ## Important
 
+This is work in progress.
+
 This is mostly just a set of utility methods for loading JSON documents, testing for specific properties and retreiving specific properties as `string` or `int64` values. There is no reason you _couldn't_ use this package directly but generally it is expected to be wrapped by a purpose-specific JSON package, for Who's On First features or brands.
 
 Testing and retrieving property is done using @tidwall 's `gjson` package under the hood. It is not currently possible to _assign_ values to JSON documents.
@@ -27,7 +29,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/whosonfirst/go-whosonfirst-json"
-	"github.com/whosonfirst/go-whosonfirst-json/utils"
+	"github.com/whosonfirst/go-whosonfirst-json/properties"
 	"log"
 )
 
@@ -57,14 +59,14 @@ func main() {
 			log.Fatal(err)
 		}
 
-		err = utils.EnsureProperties(doc, props)
+		err = properties.EnsureProperties(doc, props)
 
 		if err != nil {
 			log.Fatal(err)
 		}
 
 		for _, p := range props {
-			log.Println(path, p, utils.StringProperty(doc, []string{p}, "some default value"))
+			log.Println(path, p, properties.StringProperty(doc, []string{p}, "some default value"))
 		}
 	}
 }

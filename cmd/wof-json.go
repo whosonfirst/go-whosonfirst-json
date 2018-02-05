@@ -4,7 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/whosonfirst/go-whosonfirst-json"
-	"github.com/whosonfirst/go-whosonfirst-json/utils"
+	"github.com/whosonfirst/go-whosonfirst-json/properties"
 	"log"
 )
 
@@ -35,14 +35,14 @@ func main() {
 			log.Fatal(err)
 		}
 
-		err = utils.EnsureProperties(doc, props)
+		err = properties.EnsureProperties(doc, props)
 
 		if err != nil {
 			log.Fatal(err)
 		}
 
 		for _, p := range props {
-			log.Println(path, p, utils.StringProperty(doc, []string{p}, ""))
+			log.Println(path, p, properties.StringProperty(doc, []string{p}, ""))
 		}
 	}
 }
