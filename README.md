@@ -14,9 +14,9 @@ All of this package's dependencies are bundled with the code in the `vendor` dir
 
 ## Important
 
-This is work in progress. It may change (and break your code) still. This package aims to replace the existing [go-whosonfirst-geojson](https://github.com/whosonfirst/go-whosonfirst-geojson) package. If you want to follow along, please consult:
+This is mostly just a set of utility methods for loading JSON documents, testing for specific properties and retreiving specific properties as `string` or `int64` values. There is no reason you _couldn't_ use this package directly but generally it is expected to be wrapped by a purpose-specific JSON package, for Who's On First features or brands.
 
-This is mostly just a set of utility methods for 
+Testing and retrieving property is done using @tidwall 's `gjson` package under the hood. It is not currently possible to _assign_ values to JSON documents.
 
 ## Usage
 
